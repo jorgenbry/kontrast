@@ -1,5 +1,17 @@
-body {
-  color: #333;
+.cursor-gradient {
+  position: fixed;
+  pointer-events: none;
+  width: 64vw;
+  height: 64vw;
+  mix-blend-mode: difference;
+  z-index: 999999;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #FFFFFF 0%, #FFFFFF 66%, #FFFFFF 100%);
+  opacity: 0.75; /* Try a slight overall transparency */
+  transition: transform 8s cubic-bezier(0.1, 0.4, 0.2, 1);
+  will-change: transform;
+  top: 0;
+  left: 0;
 }
 
 /*# sourceMappingURL=main.css.map */
