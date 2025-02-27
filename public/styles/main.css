@@ -1,5 +1,7 @@
 .hero {
   position: relative;
+  min-height: 100vh;
+  background-color: var(--color--brown);
 }
 .hero .cursor-gradient {
   position: fixed;
@@ -9,8 +11,8 @@
   mix-blend-mode: difference;
   z-index: 999999;
   border-radius: 50%;
-  background: radial-gradient(circle at center, #FFFFFF 0%, #FFFFFF 66%, #FFFFFF 100%);
-  opacity: 0.75; /* Try a slight overall transparency */
+  background: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.66) 50%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.75;
   transition: transform 8s cubic-bezier(0.1, 0.4, 0.2, 1);
   will-change: transform;
   top: 0;
