@@ -19,5 +19,12 @@
     will-change: transform;
     top: 0;
     left: 0;
+    display: block !important; // Force display
   }
+}
+
+// Add a dark background to test the difference blend mode
+.hero {
+  background-color: #000;
+  min-height: 100vh;
 }
