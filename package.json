@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "sass-watch": "sass --watch src/styles:public/styles",
+    "sass-build": "sass src/styles:public/styles"
+  },
+  "devDependencies": {
+    "sass": "^1.85.1"
+  }
+}
