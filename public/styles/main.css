@@ -1,4 +1,7 @@
-.cursor-gradient {
+.hero {
+  position: relative;
+}
+.hero .cursor-gradient {
   position: fixed;
   pointer-events: none;
   width: 64vw;
