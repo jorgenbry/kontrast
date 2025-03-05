@@ -20,8 +20,19 @@ document.addEventListener('DOMContentLoaded', function() {
             cursorGradient.style.opacity = '0.75';
         }, 100); // Small delay to ensure the transition works
 
-        // Track mouse movement
+        // Add a flag to track if mouse has moved
+        let hasMouseMoved = false;
+
+        // Track mouse movement only after first move
         document.addEventListener('mousemove', (e) => {
+            if (!hasMouseMoved) {
+                // Wait for fade-in before starting to track mouse
+                setTimeout(() => {
+                    hasMouseMoved = true;
+                }, 2000); // Match this with your CSS transition time
+                return;
+            }
+
             const rect = heroSection.getBoundingClientRect();
             
             // Calculate position relative to the hero section
