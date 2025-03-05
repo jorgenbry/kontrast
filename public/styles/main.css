@@ -10,8 +10,8 @@
   height: 64vw;
   mix-blend-mode: difference;
   z-index: 999999;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 100%);
+  background: url("/img/searchlight.svg") center center no-repeat;
+  background-size: 100% 100%;
   opacity: 0.75;
   transition: transform 8s cubic-bezier(0.1, 0.4, 0.2, 1);
   will-change: transform;
