@@ -22,26 +22,22 @@ document.addEventListener('DOMContentLoaded', function() {
             cursorGradient.style.opacity = '0.75';
         }, 500);
 
-        // Check if device has orientation support
-        if (window.DeviceOrientationEvent) {
-            window.addEventListener('deviceorientation', (e) => {
-                // Convert gyro data to position
+        // Try to use device orientation if available
+        window.addEventListener('deviceorientation', (e) => {
+            if (e.beta !== null && e.gamma !== null) {  // Check if we actually have orientation data
                 const rect = heroSection.getBoundingClientRect();
                 
-                // Map beta (-180 to 180) to Y position
+                // Use more subtle movement range
                 const maxY = rect.height - (cursorGradient.offsetHeight * 0.3);
-                const y = Math.min(maxY, (e.beta + 90) * (rect.height / 180));
-                
-                // Map gamma (-90 to 90) to X position
-                const x = ((e.gamma + 90) * (rect.width / 180)) - (cursorGradient.offsetWidth / 2);
+                const y = Math.min(maxY, rect.height/2 + (e.beta * rect.height / 360));
+                const x = rect.width/2 + (e.gamma * rect.width / 180);
                 
                 cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        }
+            }
+        });
 
-        // Desktop mouse movement
+        // Desktop mouse movement (only used if orientation events aren't firing)
         document.addEventListener('mousemove', (e) => {
-            // Only use mouse movement if not on mobile/tablet
             if (!/Mobi|Android|iPad|iPhone/.test(navigator.userAgent)) {
                 const rect = heroSection.getBoundingClientRect();
                 const x = e.pageX - rect.left - window.scrollX - (cursorGradient.offsetWidth / 2);

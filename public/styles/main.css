@@ -23,5 +23,11 @@
   -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
   mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
 }
+@media screen and (max-width: 767px) {
+  .hero .cursor-gradient {
+    width: 86vh;
+    height: 86vh;
+  }
+}
 
 /*# sourceMappingURL=main.css.map */
