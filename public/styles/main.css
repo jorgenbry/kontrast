@@ -2,9 +2,10 @@
   position: relative;
   min-height: 100vh;
   background-color: var(--color--brown);
+  overflow: hidden;
 }
 .hero .cursor-gradient {
-  position: fixed;
+  position: absolute;
   pointer-events: none;
   width: 64vw;
   height: 64vw;
