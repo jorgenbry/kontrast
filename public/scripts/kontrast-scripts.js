@@ -22,32 +22,18 @@ document.addEventListener('DOMContentLoaded', function() {
             cursorGradient.style.opacity = '0.75';
         }, 500);
 
-        // Add a flag to track if mouse has moved
-        let hasMouseMoved = false;
-
-        // Track mouse movement only after first move
-        document.addEventListener('mousemove', (e) => {
-            if (!hasMouseMoved) {
-                // Wait for fade-in before starting to track mouse
-                setTimeout(() => {
-                    hasMouseMoved = true;
-                }, 3500); // Wait for fade-in plus a little extra
-                return;
-            }
-
-            const rect = heroSection.getBoundingClientRect();
-            
-            // Calculate position relative to the hero section
-            const x = e.pageX - rect.left - window.scrollX - (cursorGradient.offsetWidth / 2);
-            
-            // For Y position, clamp it to keep the gradient partially visible
-            const maxY = rect.height - (cursorGradient.offsetHeight * 0.3); // Keep 30% visible
-            const rawY = e.pageY - rect.top - window.scrollY - (cursorGradient.offsetHeight / 2);
-            const y = Math.min(maxY, rawY);
-            
-            cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
-        });
-
-        // Remove mouseleave/mouseenter handlers since we want it always visible
+        // Track mouse movement immediately after fade-in
+        setTimeout(() => {
+            document.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = e.pageX - rect.left - window.scrollX - (cursorGradient.offsetWidth / 2);
+                
+                const maxY = rect.height - (cursorGradient.offsetHeight * 0.3);
+                const rawY = e.pageY - rect.top - window.scrollY - (cursorGradient.offsetHeight / 2);
+                const y = Math.min(maxY, rawY);
+                
+                cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        }, 3000); // Start tracking right after fade-in completes
     }
 });
