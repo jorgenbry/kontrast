@@ -22,18 +22,16 @@ document.addEventListener('DOMContentLoaded', function() {
             cursorGradient.style.opacity = '0.75';
         }, 500);
 
-        // Track mouse movement immediately after fade-in
-        setTimeout(() => {
-            document.addEventListener('mousemove', (e) => {
-                const rect = heroSection.getBoundingClientRect();
-                const x = e.pageX - rect.left - window.scrollX - (cursorGradient.offsetWidth / 2);
-                
-                const maxY = rect.height - (cursorGradient.offsetHeight * 0.3);
-                const rawY = e.pageY - rect.top - window.scrollY - (cursorGradient.offsetHeight / 2);
-                const y = Math.min(maxY, rawY);
-                
-                cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        }, 3000); // Start tracking right after fade-in completes
+        // Track mouse movement immediately
+        document.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.pageX - rect.left - window.scrollX - (cursorGradient.offsetWidth / 2);
+            
+            const maxY = rect.height - (cursorGradient.offsetHeight * 0.3);
+            const rawY = e.pageY - rect.top - window.scrollY - (cursorGradient.offsetHeight / 2);
+            const y = Math.min(maxY, rawY);
+            
+            cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
+        });
     }
 });
