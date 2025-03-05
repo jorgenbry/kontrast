@@ -22,16 +22,36 @@ document.addEventListener('DOMContentLoaded', function() {
             cursorGradient.style.opacity = '0.75';
         }, 500);
 
-        // Track mouse movement immediately
+        // Check if device has orientation support
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', (e) => {
+                // Convert gyro data to position
+                const rect = heroSection.getBoundingClientRect();
+                
+                // Map beta (-180 to 180) to Y position
+                const maxY = rect.height - (cursorGradient.offsetHeight * 0.3);
+                const y = Math.min(maxY, (e.beta + 90) * (rect.height / 180));
+                
+                // Map gamma (-90 to 90) to X position
+                const x = ((e.gamma + 90) * (rect.width / 180)) - (cursorGradient.offsetWidth / 2);
+                
+                cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        }
+
+        // Desktop mouse movement
         document.addEventListener('mousemove', (e) => {
-            const rect = heroSection.getBoundingClientRect();
-            const x = e.pageX - rect.left - window.scrollX - (cursorGradient.offsetWidth / 2);
-            
-            const maxY = rect.height - (cursorGradient.offsetHeight * 0.3);
-            const rawY = e.pageY - rect.top - window.scrollY - (cursorGradient.offsetHeight / 2);
-            const y = Math.min(maxY, rawY);
-            
-            cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
+            // Only use mouse movement if not on mobile/tablet
+            if (!/Mobi|Android|iPad|iPhone/.test(navigator.userAgent)) {
+                const rect = heroSection.getBoundingClientRect();
+                const x = e.pageX - rect.left - window.scrollX - (cursorGradient.offsetWidth / 2);
+                
+                const maxY = rect.height - (cursorGradient.offsetHeight * 0.3);
+                const rawY = e.pageY - rect.top - window.scrollY - (cursorGradient.offsetHeight / 2);
+                const y = Math.min(maxY, rawY);
+                
+                cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
+            }
         });
     }
 });
