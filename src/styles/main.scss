@@ -8,9 +8,9 @@
   .cursor-gradient {
     position: absolute;
     pointer-events: none;
-    width: 80vw;
-    height: 80vw;
-    mix-blend-mode: difference;
+    width: 86vw;
+    height: 86vw;
+    mix-blend-mode: exclusion;
     z-index: 2;
     background: url('https://kontrast-three.vercel.app/img/Searchlight.svg') center center no-repeat;
     background-size: 100% 100%;
