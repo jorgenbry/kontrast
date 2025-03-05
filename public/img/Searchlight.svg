@@ -3,8 +3,9 @@
 <defs>
 <radialGradient id="paint0_radial_216_223" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(465.276 464.985) rotate(90) scale(464.377)">
 <stop stop-color="white"/>
-<stop offset="0.62" stop-color="#646464"/>
-<stop offset="1"/>
+<stop offset="0.245" stop-color="#DBDBDB"/>
+<stop offset="0.63" stop-color="#818181"/>
+<stop offset="1" stop-color="#101010"/>
 </radialGradient>
 </defs>
 </svg>
