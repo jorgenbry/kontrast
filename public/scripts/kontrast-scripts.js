@@ -14,11 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const centerY = (rect.height - cursorGradient.offsetHeight) / 2;
         cursorGradient.style.transform = `translate(${centerX}px, ${centerY}px)`;
         
-        // Start with 0 opacity and fade in
+        // Start completely invisible
         cursorGradient.style.opacity = '0';
+        
+        // Fade in slowly after a small delay
         setTimeout(() => {
             cursorGradient.style.opacity = '0.75';
-        }, 100); // Small delay to ensure the transition works
+        }, 500);
 
         // Add a flag to track if mouse has moved
         let hasMouseMoved = false;
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Wait for fade-in before starting to track mouse
                 setTimeout(() => {
                     hasMouseMoved = true;
-                }, 2000); // Match this with your CSS transition time
+                }, 3500); // Wait for fade-in plus a little extra
                 return;
             }
 
