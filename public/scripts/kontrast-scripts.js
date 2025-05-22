@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
             cursorGradient.style.opacity = '0.75';
         }, 500);
 
+        // Track current position for smooth movement
+        let currentX = centerX;
+        let currentY = centerY;
+        const maxSpeed = 100; // Maximum pixels per movement
+
         // Try to use device orientation if available
         window.addEventListener('deviceorientation', (e) => {
             if (e.beta !== null && e.gamma !== null) {  // Check if we actually have orientation data
@@ -46,9 +51,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 const targetX = e.clientX - rect.left - (cursorGradient.offsetWidth / 2);
                 const targetY = e.clientY - rect.top - (cursorGradient.offsetHeight / 2);
                 
+                // Calculate distance to move
+                const dx = targetX - currentX;
+                const dy = targetY - currentY;
+                
+                // Limit the maximum movement per frame
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance > maxSpeed) {
+                    const ratio = maxSpeed / distance;
+                    currentX += dx * ratio;
+                    currentY += dy * ratio;
+                } else {
+                    currentX = targetX;
+                    currentY = targetY;
+                }
+                
                 // Apply smooth movement with easing
-                cursorGradient.style.transform = `translate(${targetX}px, ${targetY}px)`;
-                cursorGradient.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                cursorGradient.style.transform = `translate(${currentX}px, ${currentY}px)`;
             }
         });
     }
