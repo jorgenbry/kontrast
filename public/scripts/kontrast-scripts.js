@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const cursorGradient = document.createElement('div');
         cursorGradient.className = 'cursor-gradient';
         // Add smooth transition with longer duration for more gradual movement
-        cursorGradient.style.transition = 'transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        cursorGradient.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
         heroSection.appendChild(cursorGradient);
 
         // Set initial center position
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Apply smooth movement with easing
                 cursorGradient.style.transform = `translate(${targetX}px, ${targetY}px)`;
-                cursorGradient.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                cursorGradient.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
             }
         });
     }
