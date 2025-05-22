@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const cursorGradient = document.createElement('div');
         cursorGradient.className = 'cursor-gradient';
         // Add smooth transitions for both transform and opacity
-        cursorGradient.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease-in';
+        cursorGradient.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 2s cubic-bezier(0.1, 0, 0.3, 1)';
         heroSection.appendChild(cursorGradient);
 
         // Set initial center position
