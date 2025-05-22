@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create the cursor gradient element
         const cursorGradient = document.createElement('div');
         cursorGradient.className = 'cursor-gradient';
-        // Add smooth transition with balanced duration and smooth easing
-        cursorGradient.style.transition = 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)';
+        // Add smooth transition with longer duration for more gradual movement
+        cursorGradient.style.transition = 'transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
         heroSection.appendChild(cursorGradient);
 
         // Set initial center position
@@ -42,11 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('mousemove', (e) => {
             if (!/Mobi|Android|iPad|iPhone/.test(navigator.userAgent)) {
                 const rect = heroSection.getBoundingClientRect();
-                // Calculate position directly from cursor position
-                const x = e.clientX - rect.left - (cursorGradient.offsetWidth / 2);
-                const y = e.clientY - rect.top - (cursorGradient.offsetHeight / 2);
+                // Calculate target position
+                const targetX = e.clientX - rect.left - (cursorGradient.offsetWidth / 2);
+                const targetY = e.clientY - rect.top - (cursorGradient.offsetHeight / 2);
                 
-                cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
+                // Apply smooth movement with easing
+                cursorGradient.style.transform = `translate(${targetX}px, ${targetY}px)`;
+                cursorGradient.style.transition = 'transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
             }
         });
     }
