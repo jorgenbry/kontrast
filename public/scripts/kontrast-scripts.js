@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create the cursor gradient element
         const cursorGradient = document.createElement('div');
         cursorGradient.className = 'cursor-gradient';
-        // Add smooth transitions for both transform and opacity
-        cursorGradient.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease-in';
+        // Only transition opacity, not transform
+        cursorGradient.style.transition = 'opacity 0.5s ease-in';
         heroSection.appendChild(cursorGradient);
 
         // Set initial center position
@@ -27,21 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Track current position for smooth movement
         let currentX = centerX;
         let currentY = centerY;
-        const maxSpeed = 30; // Maximum pixels per movement (reduced from 100)
-
-        // Try to use device orientation if available
-        window.addEventListener('deviceorientation', (e) => {
-            if (e.beta !== null && e.gamma !== null) {  // Check if we actually have orientation data
-                const rect = heroSection.getBoundingClientRect();
-                
-                // Use more subtle movement range
-                const maxY = rect.height - (cursorGradient.offsetHeight * 0.3);
-                const y = Math.min(maxY, rect.height/2 + (e.beta * rect.height / 360));
-                const x = rect.width/2 + (e.gamma * rect.width / 180);
-                
-                cursorGradient.style.transform = `translate(${x}px, ${y}px)`;
-            }
-        });
+        const maxSpeed = 30; // Maximum pixels per movement
 
         // Desktop mouse movement (only used if orientation events aren't firing)
         document.addEventListener('mousemove', (e) => {
@@ -66,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentY = targetY;
                 }
                 
-                // Apply smooth movement with easing
+                // Apply movement without transition
                 cursorGradient.style.transform = `translate(${currentX}px, ${currentY}px)`;
             }
         });
