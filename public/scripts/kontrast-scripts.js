@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Track current position for smooth movement
         let currentX = centerX;
         let currentY = centerY;
-        const maxSpeed = 100; // Maximum pixels per movement
+        const maxSpeed = 30; // Maximum pixels per movement (reduced from 100)
 
         // Try to use device orientation if available
         window.addEventListener('deviceorientation', (e) => {
