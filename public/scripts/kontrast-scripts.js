@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create the cursor gradient element
         const cursorGradient = document.createElement('div');
         cursorGradient.className = 'cursor-gradient';
-        // Add smooth transition with longer duration for more gradual movement
-        cursorGradient.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        // Add smooth transitions for both transform and opacity
+        cursorGradient.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease-in';
         heroSection.appendChild(cursorGradient);
 
         // Set initial center position
