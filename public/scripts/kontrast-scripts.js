@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Apply smooth movement with easing
                 cursorGradient.style.transform = `translate(${targetX}px, ${targetY}px)`;
-                cursorGradient.style.transition = 'transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                cursorGradient.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
             }
         });
     }
