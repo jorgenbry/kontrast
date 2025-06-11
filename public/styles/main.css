@@ -1,3 +1,8 @@
+html:not(.js-loaded) .section .container {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
@@ -30,49 +35,21 @@
   }
 }
 
-.suppliers-list {
-  max-width: 800px;
-  margin: 2rem auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.section .container {
+  opacity: 0;
+  visibility: visible;
+  transition: opacity 0.5s ease-out;
+}
+.section .container.js-loaded {
+  opacity: 1;
 }
 
-.supplier-item {
-  padding: 1.5rem;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  background: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+html.no-js .cursor-gradient {
+  display: none !important;
 }
-.supplier-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.supplier-name {
-  margin: 0 0 1rem 0;
-  font-size: 1.25rem;
-  color: #333;
-}
-
-.supplier-description {
-  color: #666;
-  margin-bottom: 1rem;
-  line-height: 1.5;
-}
-
-.supplier-website {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: #f5f5f5;
-  color: #333;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background 0.2s;
-}
-.supplier-website:hover {
-  background: #eee;
+html.no-js .section .container {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /*# sourceMappingURL=main.css.map */
