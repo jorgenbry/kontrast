@@ -1,3 +1,9 @@
+// Add no-js class by default, will be removed if JavaScript is enabled
+document.documentElement.classList.add('no-js');
+
+// Remove no-js class when JavaScript is available
+document.documentElement.classList.remove('no-js');
+
 document.addEventListener('DOMContentLoaded', function() {
     // Find the hero section
     const heroSection = document.querySelector('.hero');
@@ -71,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Page transition handling
-    const container = document.querySelector('.container');
-    if (container) {
+    const containers = document.querySelectorAll('section.section .container');
+    if (containers.length > 0) {
         // Handle internal link clicks
         document.addEventListener('click', (e) => {
             const link = e.target.closest('a');
@@ -80,8 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const href = link.href;
                 
-                // Add fade-out class
-                container.classList.add('fade-out');
+                // Add fade-out class to all containers
+                containers.forEach(container => {
+                    container.classList.add('fade-out');
+                });
                 
                 // Wait for fade-out to complete before navigating
                 setTimeout(() => {
