@@ -30,13 +30,10 @@
   }
 }
 
-// Page transition styles
+// Ensure content is always visible
 section.section .container {
-  transition: opacity 0.3s ease-in-out;
-  
-  &.fade-out {
-    opacity: 0;
-  }
+  opacity: 1 !important;
+  transition: none !important;
 }
 
 // No-JS fallback
@@ -44,14 +41,4 @@ html.no-js {
   .cursor-gradient {
     display: none !important;
   }
-  
-  section.section .container {
-    opacity: 1 !important;
-    transition: none !important;
-  }
-}
-
-// Ensure content is visible by default
-section.section .container {
-  opacity: 1;
 }

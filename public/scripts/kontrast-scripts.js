@@ -1,4 +1,4 @@
-// Add no-js class by default, will be removed if JavaScript is enabled
+// Add no-js class by default, will be removed if JavaScript is available
 document.documentElement.classList.add('no-js');
 
 // Remove no-js class when JavaScript is available
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create the cursor gradient element
         const cursorGradient = document.createElement('div');
         cursorGradient.className = 'cursor-gradient';
-        // Add smooth transitions for both transform and opacity
         cursorGradient.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 2s cubic-bezier(0.1, 0, 0.3, 1)';
         heroSection.appendChild(cursorGradient);
 
