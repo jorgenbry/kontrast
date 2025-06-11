@@ -1,6 +1,10 @@
-html:not(.js-loaded) .section .container {
-  opacity: 0 !important;
-  visibility: hidden !important;
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+body.loaded {
+  opacity: 1;
 }
 
 .hero {
@@ -35,21 +39,11 @@ html:not(.js-loaded) .section .container {
   }
 }
 
-.section .container {
-  opacity: 0;
-  visibility: visible;
-  transition: opacity 0.5s ease-out;
+html.no-js body {
+  opacity: 1 !important;
 }
-.section .container.js-loaded {
-  opacity: 1;
-}
-
 html.no-js .cursor-gradient {
   display: none !important;
-}
-html.no-js .section .container {
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 /*# sourceMappingURL=main.css.map */

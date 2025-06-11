@@ -1,9 +1,11 @@
-// Initial state - hide everything until JS loads
-html:not(.js-loaded) {
-  .section .container {
-    opacity: 0 !important;
-    visibility: hidden !important;
-  }
+// Prevent FOUT and handle initial state
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+body.loaded {
+  opacity: 1;
 }
 
 .hero {
@@ -38,25 +40,13 @@ html:not(.js-loaded) {
   }
 }
 
-// Content visibility and transitions
-.section .container {
-  opacity: 0;
-  visibility: visible;
-  transition: opacity 0.5s ease-out;
-  
-  &.js-loaded {
-    opacity: 1;
-  }
-}
-
 // No-JS fallback
 html.no-js {
-  .cursor-gradient {
-    display: none !important;
+  body {
+    opacity: 1 !important;
   }
   
-  .section .container {
-    opacity: 1 !important;
-    visibility: visible !important;
+  .cursor-gradient {
+    display: none !important;
   }
 }
