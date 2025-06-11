@@ -1,3 +1,11 @@
+// Initial state - hide everything until JS loads
+html:not(.js-loaded) {
+  .section .container {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
@@ -30,15 +38,25 @@
   }
 }
 
-// Ensure content is always visible
-section.section .container {
-  opacity: 1 !important;
-  transition: none !important;
+// Content visibility and transitions
+.section .container {
+  opacity: 0;
+  visibility: visible;
+  transition: opacity 0.5s ease-out;
+  
+  &.js-loaded {
+    opacity: 1;
+  }
 }
 
 // No-JS fallback
 html.no-js {
   .cursor-gradient {
     display: none !important;
+  }
+  
+  .section .container {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }

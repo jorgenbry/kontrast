@@ -1,8 +1,17 @@
 // Add no-js class by default, will be removed if JavaScript is available
 document.documentElement.classList.add('no-js');
 
-// Remove no-js class when JavaScript is available
+// Remove no-js class and add js-loaded class when JavaScript is available
 document.documentElement.classList.remove('no-js');
+document.documentElement.classList.add('js-loaded');
+
+// Wait for all resources to load
+window.addEventListener('load', function() {
+    // Add js-loaded class to all containers
+    document.querySelectorAll('.section .container').forEach(container => {
+        container.classList.add('js-loaded');
+    });
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     // Find the hero section
