@@ -69,4 +69,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Page transition handling
+    const container = document.querySelector('.container');
+    if (container) {
+        // Handle internal link clicks
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (link && link.href && link.href.startsWith(window.location.origin) && !link.target) {
+                e.preventDefault();
+                const href = link.href;
+                
+                // Add fade-out class
+                container.classList.add('fade-out');
+                
+                // Wait for fade-out to complete before navigating
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300); // Match this with the CSS transition duration
+            }
+        });
+    }
 });

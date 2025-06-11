@@ -1,9 +1,12 @@
 {
   "scripts": {
     "sass-watch": "sass --watch src/styles:public/styles",
-    "sass-build": "sass src/styles:public/styles"
+    "sass-build": "sass src/styles:public/styles",
+    "dev": "concurrently \"npm run sass-watch\" \"npm run start\"",
+    "start": "node server.js"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "sass": "^1.85.1"
   }
 }
